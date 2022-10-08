@@ -2,8 +2,21 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+import {Button} from "antd";
+import {UploadOutlined} from "@ant-design/icons";
+import CreateDApp from "../components/CreateDApp";
+import {useState} from "react";
 
 const Home: NextPage = () => {
+  const [open, setOpen] = useState(false);
+
+  const showDrawer = () => {
+    setOpen(true);
+  };
+  const onClose = () => {
+    setOpen(false)
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -25,6 +38,7 @@ const Home: NextPage = () => {
         <p className={styles.description}>
           Help users connect to Web3 social network users with the same interests
         </p>
+        <Button onClick={showDrawer}  type={'primary'} shape="round" icon={<UploadOutlined />} size={"middle"} > Upload DApp Metadata</Button>
 
         <div className={styles.grid}>
           <a href="https://rainbowkit.com" className={styles.card}>
@@ -67,9 +81,28 @@ const Home: NextPage = () => {
               Instantly deploy your Next.js site to a public URL with Vercel.
             </p>
           </a>
-        </div>
-      </main>
 
+          <a
+              href="https://github.com/vercel/next.js/tree/canary/examples"
+              className={styles.card}
+          >
+            <h2>Next.js Examples &rarr;</h2>
+            <p>Discover and deploy boilerplate example Next.js projects.</p>
+          </a>
+
+          <a
+              href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+              className={styles.card}
+          >
+            <h2>Deploy &rarr;</h2>
+            <p>
+              Instantly deploy your Next.js site to a public URL with Vercel.
+            </p>
+          </a>
+        </div>
+
+      </main>
+      <CreateDApp open={open} onClose={onClose}/>
       <footer className={styles.footer}>
         <a href="https://rainbow.me" target="_blank" rel="noopener noreferrer">
           Made with ❤️ by your frens at 🌈
