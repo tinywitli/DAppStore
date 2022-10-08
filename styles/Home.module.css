@@ -47,7 +47,13 @@
 
 .title,
 .description {
+  padding: 0;
   text-align: center;
+}
+.title{
+  margin: 0;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 .description {
